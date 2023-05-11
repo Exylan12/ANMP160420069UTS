@@ -31,8 +31,6 @@ class ListViewModel(application: Application):AndroidViewModel(application) {
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
-//                loadingLD.value = false
-//                Log.d("showvoley", it)
                 val sType = object : TypeToken<ArrayList<Library>>() { }.type
                 val result = Gson().fromJson<ArrayList<Library>>(it, sType)
                 librarysLD.value = result

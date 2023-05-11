@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a160420069utsproject.R
 import com.example.a160420069utsproject.model.Library
+import com.example.a160420069utsproject.util.loadImage
 
 class LibraryListAdapter(val libraryList:ArrayList<Library>): RecyclerView.Adapter<LibraryListAdapter.LibraryViewHolder>()
 {
@@ -31,10 +33,13 @@ class LibraryListAdapter(val libraryList:ArrayList<Library>): RecyclerView.Adapt
 
         val btnDetail = holder.view.findViewById<Button>(R.id.btnDetail)
         btnDetail.setOnClickListener {
-            val action = LibraryListFragmentDirections.actionLibraryDetail()
+            val action = LibraryListFragmentDirections.actionLibraryDetail(libraryList[position].id.toString())
             Navigation.findNavController(it).navigate(action)
         }
 
+        var imageView = holder.view.findViewById<ImageView>(R.id.imageView2)
+        var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBar2)
+        imageView.loadImage(libraryList[position].photoUrl, progressBar)
     }
 
     override fun getItemCount(): Int {

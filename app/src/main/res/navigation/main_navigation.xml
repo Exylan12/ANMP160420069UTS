@@ -13,10 +13,17 @@
         <action
             android:id="@+id/actionLibraryDetail"
             app:destination="@id/libraryDetailFragment" />
+        <argument
+            android:name="book_id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/libraryDetailFragment"
         android:name="com.example.a160420069utsproject.view.LibraryDetailFragment"
         android:label="fragment_library_detail"
-        tools:layout="@layout/fragment_library_detail" />
+        tools:layout="@layout/fragment_library_detail" >
+        <argument
+            android:name="book_id"
+            app:argType="string" />
+    </fragment>
 </navigation>
